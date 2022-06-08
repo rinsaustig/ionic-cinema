@@ -26,10 +26,25 @@
   </ion-card>
   <ion-list>
     <ion-item>
-      <ion-thumbnail slot="start">
-        <ion-img src="../../assets/bg.png"></ion-img>
+      <ion-thumbnail slot="start" *ngIf="image.length == 0">
+        <ion-avatar>
+          <img src="../../assets/bg.png" alt="Avatar" />
+        </ion-avatar>
       </ion-thumbnail>
-      <ion-label>Avatar</ion-label>
+      <ion-thumbnail slot="start" *ngIf="image.length > 0">
+        <ion-avatar>
+          <img [src]="image[0].data" alt="Avatar" />
+        </ion-avatar>
+      </ion-thumbnail>
+      <ion-button
+        fill="clear"
+        expand="full"
+        color="dark"
+        (click)="selectImage()"
+      >
+        <ion-icon slot="start" name="camera"></ion-icon>
+        Cambiar avatar
+      </ion-button>
     </ion-item>
   </ion-list>
   <ion-card class="card-details">
