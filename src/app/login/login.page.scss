@@ -1,0 +1,78 @@
+@import url("http://fonts.cdnfonts.com/css/akrobat");
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    background-image: url(https://www.prexcard.com.ar/assets/img/2020/img_bg-header-tarjeta-gratis-internacional.svg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.logo-cont {
+    padding-top: 1em;
+    padding-left: 1.3em;
+    background-color: transparent;
+}
+.logo {
+    background-color: transparent;
+}
+
+.bg-cont {
+    height: 160px;
+    padding: 0;
+}
+
+.bg {
+    background-color: var(--ion-color-tertiary);
+    @supports (mix-blend-mode: overlay) {
+        .img-container {
+            mix-blend-mode: overlay;
+        }
+    }
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.title-cont {
+    padding: 1em 2em;
+    background-color: var(--ion-color-tertiary);
+    height: 100%;
+    text-align: left;
+}
+.card-details {
+    background-color: var(--ion-color-tertiary);
+    color: #fff;
+    padding: 2em 0;
+}
+
+.subtitle {
+    color: #fff;
+}
+
+.title {
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.card-details ion-item {
+    padding: 0;
+    --padding-start: 0.5em;
+    --padding-end: 0;
+    --padding-top: 0.5em;
+    --padding-bottom: 0;
+    border-radius: 5px;
+}
+.card-details ion-button {
+    padding: 0.3em 0.9em 0 0.5em;
+    --padding-top: 0.5em;
+    --padding-bottom: 0.5em;
+}
+
+.btn-cont {
+    padding-top: 1em;
+}

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title-cont">Inicio de sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="logo-cont">
+    <img src="../../assets/logo.png" class="logo" />
+  </div>
+  <ion-card class="card-details">
+    <ion-card-header>
+      <ion-card-subtitle class="subtitle"
+        >Peliculas en tu mano</ion-card-subtitle
+      >
+      <ion-card-title class="title"
+        >Una prepaga para ver las mejores peliculas en tu mano</ion-card-title
+      >
+    </ion-card-header>
+    <ion-card-content>
+      Sin costo de mantenimiento ni letra chica. Registrate y conocela
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="bg-cont">
+    <img src="../../assets/bg.png" class="bg" />
+  </ion-card>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img src="../../assets/bg.png"></ion-img>
+      </ion-thumbnail>
+      <ion-label>Avatar</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-card class="card-details">
+    <ion-item color="tertiary">
+      <ion-input
+        type="text"
+        [(ngModel)]="user"
+        placeholder="Usuario"
+      ></ion-input>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-input
+        type="password"
+        [(ngModel)]="password"
+        placeholder="Contraseña"
+      ></ion-input>
+    </ion-item>
+    <ion-button expand="block" color="danger" (click)="register()">
+      <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      ¿No tenés cuenta? Registrate!
+    </ion-button>
+    <ion-button
+      expand="block"
+      color="secondary"
+      expand="block"
+      (click)="login()"
+      >Ingresar</ion-button
+    >
+  </ion-card>
+</ion-content>
