@@ -13,6 +13,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     const user = localStorage.getItem('token');
     if (user == null) {
+      console.log(user);
       this.router.navigateByUrl('/login', { replaceUrl: true });
     }
   }

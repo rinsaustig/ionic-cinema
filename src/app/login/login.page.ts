@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   Camera,
@@ -8,6 +9,7 @@ import {
 } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { LoadingController, Platform } from '@ionic/angular';
+import { LoginService } from '../services/login.service';
 
 const IMAGE_DIR = 'stored-image';
 
@@ -23,6 +25,7 @@ interface LocalFile {
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  form: FormGroup;
   user: string;
   password: string;
   image: LocalFile[] = [];
@@ -30,11 +33,17 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private platform: Platform,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
     this.loadFiles();
+    this.initialice();
+  }
+
+  initialice() {
+    this.form = this.loginService.createForm();
   }
 
   async loadFiles() {
@@ -50,7 +59,6 @@ export class LoginPage implements OnInit {
     })
       .then(
         (result) => {
-          console.log('here: ', result);
           this.loadFileData(result.files);
         },
         async (err) => {
@@ -76,7 +84,6 @@ export class LoginPage implements OnInit {
       path: filePath,
       data: `data:image/jpeg;base64,${readFile.data}`,
     });
-    console.log('readFile: ', this.image);
   }
 
   async selectImage() {
@@ -86,7 +93,6 @@ export class LoginPage implements OnInit {
       resultType: CameraResultType.Uri,
       source: CameraSource.Photos,
     });
-    console.log(image);
 
     if (image) {
       this.saveImage(image);
@@ -95,14 +101,12 @@ export class LoginPage implements OnInit {
 
   async saveImage(photo: Photo) {
     const base64Data = await this.readAsBase64(photo);
-    console.log(base64Data);
     const fileName = new Date().getTime() + '.jpeg';
     const savedFile = await Filesystem.writeFile({
       directory: Directory.Data,
       path: `${IMAGE_DIR}/${fileName}`,
       data: base64Data,
     });
-    console.log('saved: ', savedFile);
     this.loadFiles();
   }
 
@@ -130,7 +134,13 @@ export class LoginPage implements OnInit {
       reader.readAsDataURL(blob);
     });
 
-  login() {}
+  login() {
+    if (this.form.valid) {
+      console.log('form valid:', this.form.valid);
+    } else {
+      console.log('form invalid: ', this.form.valid);
+    }
+  }
 
   register() {
     this.router.navigate(['/register']);

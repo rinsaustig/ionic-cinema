@@ -48,30 +48,34 @@
     </ion-item>
   </ion-list>
   <ion-card class="card-details">
-    <ion-item color="tertiary">
-      <ion-input
-        type="text"
-        [(ngModel)]="user"
-        placeholder="Usuario"
-      ></ion-input>
-    </ion-item>
-    <ion-item color="tertiary">
-      <ion-input
-        type="password"
-        [(ngModel)]="password"
-        placeholder="Contraseña"
-      ></ion-input>
-    </ion-item>
-    <ion-button expand="block" color="danger" (click)="register()">
-      <ion-icon name="arrow-forward" slot="end"></ion-icon>
-      ¿No tenés cuenta? Registrate!
-    </ion-button>
-    <ion-button
-      expand="block"
-      color="secondary"
-      expand="block"
-      (click)="login()"
-      >Ingresar</ion-button
-    >
+    <form action="">
+      <form [formGroup]="form">
+        <ion-item color="tertiary">
+          <ion-input
+            formControlName="user"
+            type="text"
+            placeholder="Usuario"
+          ></ion-input>
+        </ion-item>
+        <ion-item color="tertiary">
+          <ion-input
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></ion-input>
+        </ion-item>
+        <ion-button expand="block" color="danger" (click)="register()">
+          <ion-icon name="arrow-forward" slot="end"></ion-icon>
+          ¿No tenés cuenta? Registrate!
+        </ion-button>
+        <ion-button
+          expand="block"
+          color="secondary"
+          expand="block"
+          (click)="login()"
+          >Ingresar</ion-button
+        >
+      </form>
+    </form>
   </ion-card>
 </ion-content>
