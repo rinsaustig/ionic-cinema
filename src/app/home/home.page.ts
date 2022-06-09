@@ -11,10 +11,19 @@ export class HomePage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    this.auth();
+  }
+
+  auth() {
     const user = localStorage.getItem('token');
     if (user == null) {
       console.log(user);
       this.router.navigateByUrl('/login', { replaceUrl: true });
     }
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login', { replaceUrl: true });
   }
 }

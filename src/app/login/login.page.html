@@ -59,10 +59,14 @@
         </ion-item>
         <ion-item color="tertiary">
           <ion-input
+            #passwordEyeRegister
+            [type]="passwordTypeInput"
             formControlName="password"
-            type="password"
             placeholder="Contraseña"
           ></ion-input>
+          <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+            <ion-icon [name]="iconpassword"></ion-icon>
+          </button>
         </ion-item>
         <ion-button expand="block" color="danger" (click)="register()">
           <ion-icon name="arrow-forward" slot="end"></ion-icon>

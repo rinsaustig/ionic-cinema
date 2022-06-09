@@ -1,9 +1,54 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="logo-cont">
+    <img src="../../assets/logo.png" class="logo" />
+  </div>
+  <ion-card color="tertiary">
+    <ion-card-header>
+      <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formRegister" (keyup.enter)="save()">
+        <ion-item color="secondary">
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input formControlName="user"></ion-input>
+        </ion-item>
+        <ion-item color="secondary">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input
+            formControlName="password"
+            #passwordEyeRegister
+            [type]="passwordTypeInput"
+          ></ion-input>
+          <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+            <ion-icon [name]="iconpassword"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-item color="secondary">
+          <ion-label position="floating">Confirmar contraseña</ion-label>
+          <ion-input
+            formControlName="confirmationPassword"
+            #passwordEyeRegister
+            [type]="passwordTypeInput"
+          ></ion-input>
+          <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+            <ion-icon [name]="iconpassword"></ion-icon>
+          </button>
+        </ion-item>
+        <br />
+        <ion-button (click)="save()" color="secondary">Registrarse </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="bg-cont">
+    <img src="../../assets/bg.png" class="bg" />
+  </ion-card>
 </ion-content>

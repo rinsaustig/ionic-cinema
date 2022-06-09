@@ -1,20 +1,17 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar color="light">
-      <ion-img [src]="logo" style="width: 20%; padding-left: 0.5em"></ion-img>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar Sesión</ion-button>
+    </ion-buttons>
+    <ion-title class="title-cont">Cartelera</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
-      >
-    </p>
+<ion-content>
+  <div class="logo-cont">
+    <img src="../../assets/logo.png" class="logo" />
   </div>
+  <ion-card class="bg-cont">
+    <img src="../../assets/bg.png" class="bg" />
+  </ion-card>
 </ion-content>

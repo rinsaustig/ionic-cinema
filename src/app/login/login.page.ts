@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -25,6 +25,10 @@ interface LocalFile {
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  @ViewChild('passwordEyeRegister') passwordEye;
+
+  iconpassword = 'eye-off';
+  passwordTypeInput = 'password';
   form: FormGroup;
   user: string;
   password: string;
@@ -46,10 +50,17 @@ export class LoginPage implements OnInit {
     this.form = this.loginService.createForm();
   }
 
+  togglePasswordMode() {
+    this.passwordTypeInput =
+      this.passwordTypeInput === 'text' ? 'password' : 'text';
+    this.iconpassword = this.iconpassword === 'eye-off' ? 'eye' : 'eye-off';
+    this.passwordEye.el.setFocus();
+  }
+
   async loadFiles() {
     this.image = [];
     const loading = await this.loadingCtrl.create({
-      message: 'Loading...',
+      message: 'Cargando...',
     });
     await loading.present();
 
@@ -136,7 +147,7 @@ export class LoginPage implements OnInit {
 
   login() {
     if (this.form.valid) {
-      console.log('form valid:', this.form.valid);
+      this.loginService.login(this.form.value);
     } else {
       console.log('form invalid: ', this.form.valid);
     }

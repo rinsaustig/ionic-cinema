@@ -1,0 +1,43 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+.logo-cont {
+    padding-top: 1.5em;
+    padding-left: 1.8em;
+    background-color: transparent;
+}
+.logo {
+    background-color: transparent;
+}
+.bg-cont {
+    padding: 0;
+}
+
+.bg {
+    background-color: var(--ion-color-tertiary);
+    @supports (mix-blend-mode: overlay) {
+        .img-container {
+            mix-blend-mode: overlay;
+        }
+    }
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.btn_eye_icon {
+    position: absolute;
+    right: 22px;
+    bottom: 8px;
+    background: transparent;
+    z-index: 10;
+    cursor: pointer;
+    ion-icon {
+        font-size: 22px;
+        color: #fff;
+    }
+}
+
+.btn_eye_icon:focus {
+    outline: none !important;
+}
