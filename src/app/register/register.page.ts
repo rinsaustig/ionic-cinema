@@ -6,7 +6,8 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
-import { RegistrationService } from '../services/registration.service';
+
+import { RegistrationService } from '../services/registration/registration.service';
 
 @Component({
   selector: 'app-register',

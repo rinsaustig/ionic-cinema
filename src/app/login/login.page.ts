@@ -8,8 +8,8 @@ import {
   Photo,
 } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
-import { LoadingController, Platform } from '@ionic/angular';
-import { LoginService } from '../services/login.service';
+import { AlertController, LoadingController, Platform } from '@ionic/angular';
+import { LoginService } from '../services/login/login.service';
 
 const IMAGE_DIR = 'stored-image';
 
@@ -35,6 +35,7 @@ export class LoginPage implements OnInit {
   image: LocalFile[] = [];
 
   constructor(
+    public alertController: AlertController,
     private router: Router,
     private platform: Platform,
     private loadingCtrl: LoadingController,
@@ -145,11 +146,17 @@ export class LoginPage implements OnInit {
       reader.readAsDataURL(blob);
     });
 
-  login() {
+  async login() {
     if (this.form.valid) {
       this.loginService.login(this.form.value);
     } else {
-      console.log('form invalid: ', this.form.valid);
+      const alert = await this.alertController.create({
+        header: 'Datos incompletos',
+        message: 'Tienes que llenar todos los datos',
+        buttons: ['Aceptar'],
+      });
+
+      await alert.present();
     }
   }
 
