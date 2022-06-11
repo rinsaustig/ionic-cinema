@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MovieModel } from '../models/movie.interface';
@@ -11,6 +12,7 @@ import { AppStore } from '../store/app.store';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  formRate: FormGroup;
   movies: MovieModel[] = [];
   logo = 'assets/logo.png';
   imageUrl = environment.imageUrl;
@@ -29,6 +31,7 @@ export class HomePage implements OnInit {
     this.store.state$.subscribe((data) => {
       if (data.movies.length > 0) {
         this.movies = data.movies;
+        console.log(data.movies);
       } else {
         this.homeService.getNowPlaying().subscribe((data) => {
           this.movies = data.results;
@@ -39,6 +42,8 @@ export class HomePage implements OnInit {
         });
       }
     });
+
+    this.formRate = this.homeService.createForm();
   }
   catch(err: any) {
     console.log(err);
@@ -50,6 +55,11 @@ export class HomePage implements OnInit {
       console.log(user);
       this.router.navigateByUrl('/login', { replaceUrl: true });
     }
+  }
+
+  rate(index) {
+    console.log(this.formRate.value, index);
+    console.log(this.formRate.value);
   }
 
   logout() {

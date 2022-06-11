@@ -6,9 +6,6 @@ import { MovieModel } from 'src/app/models/movie.interface';
 export interface OrderState {
   movies: MovieModel[];
   movieSelected: MovieModel | null;
-  search: MovieModel[];
-  flag: boolean;
-  header: string;
 }
 
 @Injectable()
@@ -17,9 +14,6 @@ export class AppStore extends ComponentStore<OrderState> {
     super({
       movies: [],
       movieSelected: null,
-      search: [],
-      flag: false,
-      header: '',
     });
   }
   saveMovies = this.updater((state: OrderState, movies: MovieModel[]) => ({
@@ -27,36 +21,19 @@ export class AppStore extends ComponentStore<OrderState> {
     movies: [...movies, ...state.movies],
   }));
 
-  switchFlag = this.updater((state: OrderState, flag: boolean) => ({
-    ...state,
-    flag: flag,
-  }));
-
-  saveSearchHeader = this.updater((state: OrderState, header: string) => ({
-    ...state,
-    header: header,
-  }));
-
-  saveSearch = this.updater((state: OrderState, search: MovieModel[]) => ({
-    ...state,
-    search: [...search, ...state.search],
-  }));
-
-  deleteMovies = this.updater((state: OrderState) => {
-    let searchCopy = [...state.search];
-    searchCopy.splice(0, searchCopy.length);
+  editMovie = this.updater((state: OrderState, movie: MovieModel) => {
+    const index = state.movies.findIndex((m) => m.id === movie.id);
+    const newMovies = [...state.movies];
+    newMovies[index] = movie;
     return {
       ...state,
-      search: searchCopy,
+      movies: newMovies,
     };
   });
-
   saveMovieSelected = this.updater((state: OrderState, movie: MovieModel) => ({
     ...state,
     movieSelected: movie,
   }));
-  flag$ = this.select((state) => state.flag);
-  header$ = this.select((state) => state.header);
   movies$: Observable<MovieModel[]> = this.select((state) => state.movies);
   movieSelected$: Observable<MovieModel | null> = this.select(
     (state) => state.movieSelected

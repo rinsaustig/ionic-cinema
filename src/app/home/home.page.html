@@ -21,11 +21,65 @@
         <ion-card-title>
           <h2>{{movie.original_title}}</h2>
         </ion-card-title>
+        <form class="rating" [formGroup]="formRate">
+          <label>
+            <input
+              type="radio"
+              value="2"
+              formControlName="rate"
+              (click)="rate(i)"
+            />
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="4"
+              formControlName="rate"
+              (click)="rate(i)"
+            />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="6"
+              formControlName="rate"
+              (click)="rate(i)"
+            />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="8"
+              formControlName="rate"
+              (click)="rate(i)"
+            />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="10"
+              formControlName="rate"
+              (click)="rate(i)"
+            />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+        </form>
         <ion-card-subtitle>
-          <h3>{{movie.vote_average}}</h3>
-        </ion-card-subtitle>
-        <ion-card-subtitle>
-          <ion-text-area>{{movie.overview}}</ion-text-area>
+          <h3>{{movie.overview}}</h3>
         </ion-card-subtitle>
       </ion-card-content>
     </ion-card>
