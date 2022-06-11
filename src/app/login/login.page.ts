@@ -147,7 +147,7 @@ export class LoginPage implements OnInit {
     });
 
   async login() {
-    if (this.form.valid) {
+    if (this.form.markAllAsTouched && this.form.valid) {
       this.loginService.login(this.form.value);
     } else {
       const alert = await this.alertController.create({
