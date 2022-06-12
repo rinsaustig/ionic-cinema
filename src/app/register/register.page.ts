@@ -52,6 +52,12 @@ export class RegisterPage implements OnInit {
         user: f.user,
         password: f.password,
       };
+      const alert = await this.alertController.create({
+        header: 'Registrado!',
+        message: 'Usuario creado correctamente',
+        buttons: ['Aceptar'],
+      });
+      await alert.present();
       this.registrationService.register(user);
     } else {
       const alert = await this.alertController.create({

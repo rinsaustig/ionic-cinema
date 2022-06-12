@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar Sesión</ion-button>
+    </ion-buttons>
+    <ion-title class="title-cont">Pelicula</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item class="bg-cont" *ngIf="data">
+    <ion-card>
+      <ion-card-content>
+        <ion-fab vertical="top" horizontal="end" slot="fixed">
+          <ion-fab-button color="tertiary" (click)="editSave()">
+            <ion-icon name="{{iconName}}"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        <img [src]="movieSelected?.poster_path" class="bg" />
+        <ion-card-title>
+          <h2>{{movieSelected?.original_title}}</h2>
+        </ion-card-title>
+        <ion-card-subtitle>
+          <h3>{{movieSelected?.overview}}</h3>
+        </ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+  <ion-item class="bg-cont" *ngIf="edit && !data">
+    <ion-card>
+      <ion-card-content>
+        <ion-fab vertical="top" horizontal="end" slot="fixed">
+          <ion-fab-button color="tertiary" (click)="submit()">
+            <ion-icon name="{{iconName}}"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        <img [src]="movieSelected?.poster_path" class="bg" />
+        <form [formGroup]="form">
+          <input
+            class="input"
+            type="text"
+            name="title"
+            placeholder="Titulo"
+            minlength="3"
+            formControlName="title"
+            required
+          />
+          <input
+            minlength="3"
+            class="input2"
+            type="text"
+            name="overview"
+            placeholder="Descripción"
+            formControlName="overview"
+            required
+          />
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+</ion-content>

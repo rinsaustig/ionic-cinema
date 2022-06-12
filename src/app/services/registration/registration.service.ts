@@ -28,7 +28,7 @@ export class RegistrationService {
     this.subRef$ = this.http.post(this.url, credentials).subscribe(
       (res) => {
         localStorage.setItem('token', JSON.stringify(res));
-        this.router.navigateByUrl('home', { replaceUrl: true });
+        this.router.navigateByUrl('login', { replaceUrl: true });
       },
       async (error) => {
         const alert = await this.alertController.create({

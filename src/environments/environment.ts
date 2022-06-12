@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  linkedin: 'https://www.linkedin.com/in/rodrigo-gomez-insausti-0a867b48/',
   production: false,
   register: 'http://localhost:3000/users/register',
   login: 'http://localhost:3000/users/login',

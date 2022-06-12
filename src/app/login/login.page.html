@@ -48,38 +48,36 @@
     </ion-item>
   </ion-list>
   <ion-card class="card-details">
-    <form action="">
-      <form [formGroup]="form">
-        <ion-item color="tertiary">
-          <ion-input
-            formControlName="user"
-            type="text"
-            placeholder="Usuario"
-          ></ion-input>
-        </ion-item>
-        <ion-item color="tertiary">
-          <ion-input
-            #passwordEyeRegister
-            [type]="passwordTypeInput"
-            formControlName="password"
-            placeholder="Contraseña"
-          ></ion-input>
-          <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
-            <ion-icon [name]="iconpassword"></ion-icon>
-          </button>
-        </ion-item>
-        <ion-button expand="block" color="danger" (click)="register()">
-          <ion-icon name="arrow-forward" slot="end"></ion-icon>
-          ¿No tenés cuenta? Registrate!
-        </ion-button>
-        <ion-button
-          expand="block"
-          color="secondary"
-          expand="block"
-          (click)="login()"
-          >Ingresar</ion-button
-        >
-      </form>
+    <form [formGroup]="form">
+      <ion-item color="tertiary">
+        <ion-input
+          formControlName="user"
+          type="text"
+          placeholder="Usuario"
+        ></ion-input>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-input
+          #passwordEyeRegister
+          [type]="passwordTypeInput"
+          formControlName="password"
+          placeholder="Contraseña"
+        ></ion-input>
+        <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+          <ion-icon [name]="iconpassword"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-button expand="block" color="danger" (click)="register()">
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+        ¿No tenés cuenta? Registrate!
+      </ion-button>
+      <ion-button
+        expand="block"
+        color="secondary"
+        expand="block"
+        (click)="login()"
+        >Ingresar</ion-button
+      >
     </form>
   </ion-card>
 </ion-content>

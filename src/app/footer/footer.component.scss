@@ -1,0 +1,27 @@
+@import url("http://fonts.cdnfonts.com/css/akrobat");
+.footer-cont {
+    background-color: #000;
+    font-family: "Akrobat Black", sans-serif;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+}
+
+.name-container {
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}

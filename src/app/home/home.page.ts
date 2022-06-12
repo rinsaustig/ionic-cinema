@@ -13,6 +13,7 @@ import { AppStore } from '../store/app.store';
 })
 export class HomePage implements OnInit {
   formRate: FormGroup;
+  value: number;
   movies: MovieModel[] = [];
   logo = 'assets/logo.png';
   imageUrl = environment.imageUrl;
@@ -31,7 +32,6 @@ export class HomePage implements OnInit {
     this.store.state$.subscribe((data) => {
       if (data.movies.length > 0) {
         this.movies = data.movies;
-        console.log(data.movies);
       } else {
         this.homeService.getNowPlaying().subscribe((data) => {
           this.movies = data.results;
@@ -52,14 +52,22 @@ export class HomePage implements OnInit {
   auth() {
     const user = localStorage.getItem('token');
     if (user == null) {
-      console.log(user);
       this.router.navigateByUrl('/login', { replaceUrl: true });
     }
   }
 
-  rate(index) {
-    console.log(this.formRate.value, index);
-    console.log(this.formRate.value);
+  rate(index: number, value: number) {
+    let editedMovie = this.movies[index];
+    editedMovie.vote_average = value;
+    this.store.editMovie(editedMovie);
+    this.store.state$.subscribe((data) => {
+      this.movies = data.movies;
+    });
+  }
+
+  selectMovie(index) {
+    this.store.saveMovieSelected(this.movies[index]);
+    this.router.navigateByUrl('/single');
   }
 
   logout() {
